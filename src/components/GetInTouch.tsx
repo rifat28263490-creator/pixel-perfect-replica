@@ -1,44 +1,41 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-import { AnimatedSection, ScaleIn } from "@/components/AnimatedSection";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import looperBg from "@/assets/LooperBG-working-process-right.svg";
 
 const GetInTouch = () => {
   return (
     <>
       {/* Get In Touch */}
-      <section className="py-20 bg-secondary">
-        <div className="container mx-auto px-4 text-center">
+      <section id="contact" className="relative py-20 bg-secondary overflow-hidden">
+        <img src={looperBg} alt="" className="absolute right-0 top-0 h-full opacity-20 pointer-events-none" />
+        <img src={looperBg} alt="" className="absolute left-0 bottom-0 h-full opacity-15 pointer-events-none rotate-180" />
+        <div className="container mx-auto px-4 text-center relative z-10">
           <AnimatedSection>
-            <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">Get In Touch</h2>
-            <div className="w-16 h-1 bg-secondary-foreground/30 mx-auto mt-3 mb-6 rounded-full" />
-            <p className="text-secondary-foreground/70 max-w-lg mx-auto mb-8">
-              Ready to start your next project? Contact us today and let's build something amazing together.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <Input placeholder="Enter your email" className="bg-white/90 border-0 text-secondary-foreground rounded-full" />
-              <Button className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90 rounded-full px-8">
-                Send
-              </Button>
-            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground italic mb-8">Get In Touch</h2>
+            <Button variant="outline" className="rounded-full border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary px-8 text-sm">
+              Get a Free Consultation →
+            </Button>
           </AnimatedSection>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-background border-t border-border/30 py-12">
+      <footer className="bg-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
-            {/* Logo & Social */}
+          <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-10 mb-10">
+            {/* Logo & Description */}
             <div>
               <div className="mb-4">
-                <img src="/logo.svg" alt="Flavour" className="h-8" />
+                <img src="/logo.svg" alt="Finixcode" className="h-8" />
               </div>
-              <p className="text-muted-foreground text-sm mb-4">Building future-ready digital products.</p>
-              <div className="flex gap-3">
-                {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                  <a key={i} href="#" className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 hover:scale-110 transition-all duration-300">
-                    <Icon className="w-4 h-4 text-primary" />
+              <p className="text-gray-500 text-xs leading-relaxed mb-4">
+                Finixcode primarily develops and distributes software products in its capacity as a software company. The goals of Finixcode vary depending on its client base and specialization.
+              </p>
+              <div className="flex gap-2">
+                {["P", "📷", "𝕏", "f"].map((icon, i) => (
+                  <a key={i} href="#" className="w-8 h-8 rounded-full bg-gray-900 flex items-center justify-center hover:bg-gray-700 transition-colors">
+                    <span className="text-white text-xs">{icon}</span>
                   </a>
                 ))}
               </div>
@@ -46,29 +43,27 @@ const GetInTouch = () => {
 
             {/* Quick Links */}
             <div>
-              <h4 className="text-foreground font-semibold mb-4">Quick Links</h4>
-              <div className="space-y-2">
-                {["Home", "About Us", "Services", "Portfolio", "Blog", "Contact"].map((l) => (
-                  <a key={l} href="#" className="block text-muted-foreground text-sm hover:text-foreground hover:translate-x-1 transition-all duration-300">{l}</a>
+              <h4 className="text-gray-900 font-bold mb-4">Quick Links</h4>
+              <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+                {["Home", "Our Services", "About Us", "Products", "Case Studies", "Blog", "FAQs", "Terms And Conditions"].map((l) => (
+                  <a key={l} href="#" className="text-gray-500 text-sm hover:text-gray-900 transition-colors">{l}</a>
                 ))}
               </div>
             </div>
 
             {/* Newsletter */}
             <div>
-              <h4 className="text-foreground font-semibold mb-4">Newsletter</h4>
-              <p className="text-muted-foreground text-sm mb-4">Subscribe for the latest updates and insights.</p>
-              <div className="flex gap-2">
-                <Input placeholder="Your email" className="bg-muted border-border/50 rounded-full text-sm" />
-                <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full px-6 text-sm">
-                  Join
-                </Button>
-              </div>
+              <h4 className="text-gray-900 font-bold mb-4">Newsletter</h4>
+              <p className="text-gray-500 text-sm mb-4">Sing Up To Get More Every Updates</p>
+              <Input placeholder="Enter your Email" className="bg-white border-gray-300 rounded-md text-sm mb-3" />
+              <Button className="bg-secondary text-secondary-foreground hover:bg-secondary/90 rounded-full px-6 text-sm">
+                Submit →
+              </Button>
             </div>
           </div>
 
-          <div className="border-t border-border/30 pt-6 text-center">
-            <p className="text-muted-foreground text-sm">© 2026 Flavour. All rights reserved.</p>
+          <div className="border-t border-gray-200 pt-6 text-center">
+            <p className="text-gray-400 text-sm">© Copyright 2025 Finixcode. All right reserved</p>
           </div>
         </div>
       </footer>
