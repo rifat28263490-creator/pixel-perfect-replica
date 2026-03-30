@@ -30,7 +30,7 @@ const GetInTouch = () => {
             {/* Logo & Social */}
             <div>
               <div className="mb-4">
-                <img src={logo} alt="Flavour" className="h-8" />
+                <img src="/logo.svg" alt="Flavour" className="h-8" />
               </div>
               <p className="text-muted-foreground text-sm mb-4">Building future-ready digital products.</p>
               <div className="flex gap-3">
