@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const GetInTouch = () => {
   return (
@@ -28,11 +29,8 @@ const GetInTouch = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
             {/* Logo & Social */}
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                  <span className="text-secondary-foreground font-bold text-lg">F</span>
-                </div>
-                <span className="text-foreground font-semibold text-lg">Flavour</span>
+              <div className="mb-4">
+                <img src={logo} alt="Flavour" className="h-8" />
               </div>
               <p className="text-muted-foreground text-sm mb-4">Building future-ready digital products.</p>
               <div className="flex gap-3">
