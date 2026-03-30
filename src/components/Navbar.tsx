@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.svg";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -16,11 +17,8 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/30">
       <div className="container mx-auto flex items-center justify-between py-4 px-4 lg:px-8">
-        <a href="#home" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-            <span className="text-secondary-foreground font-bold text-lg">F</span>
-          </div>
-          <span className="text-foreground font-semibold text-lg">Flavour</span>
+        <a href="#home" className="flex items-center">
+          <img src={logo} alt="Flavour" className="h-8" />
         </a>
 
         {/* Desktop */}
