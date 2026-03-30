@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const GetInTouch = () => {
   return (
