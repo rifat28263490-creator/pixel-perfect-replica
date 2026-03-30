@@ -4,10 +4,10 @@ import looperBg from "@/assets/LooperBG-working-process-right.svg";
 import ellipse from "@/assets/working-process-right-Ellipse.svg";
 
 const steps = [
-  { num: "01", title: "REQUIREMENTS ANALYSIS" },
-  { num: "02", title: "SPRINT PLANNING" },
-  { num: "03", title: "DESIGN & IMPLEMENTATION" },
-  { num: "04", title: "TESTING & LAUNCH" },
+  { num: "01", title: "REQUIREMENTS ANALYSIS", desc: "We thoroughly analyze your business requirements to understand goals." },
+  { num: "02", title: "DETAIL PLANNING", desc: "Creating a comprehensive roadmap and project plan for execution." },
+  { num: "03", title: "DESIGN & IMPLEMENTATION", desc: "Bringing the vision to life with pixel-perfect design and clean code." },
+  { num: "04", title: "TESTING & LAUNCH", desc: "Rigorous testing and seamless deployment of your product." },
 ];
 
 const WorkingProcess = () => {
@@ -21,10 +21,10 @@ const WorkingProcess = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             Working <span className="text-secondary italic">Process</span>
           </h2>
-          <p className="text-muted-foreground mt-3 italic">Thoughts that make sense</p>
+          <p className="text-muted-foreground mt-3">The path that makes sense</p>
         </AnimatedSection>
 
-        <div className="max-w-2xl mx-auto space-y-4">
+        <div className="max-w-2xl mx-auto space-y-5">
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
@@ -32,10 +32,13 @@ const WorkingProcess = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1], delay: i * 0.15 }}
-              className="flex items-center gap-6 bg-primary/15 border border-primary/40 rounded-full px-8 py-5 hover:bg-primary/20 transition-all hover:-translate-y-1 duration-300"
+              className="flex items-center gap-6 bg-primary/10 border border-primary/30 rounded-2xl px-6 py-5 hover:bg-primary/15 transition-all hover:-translate-y-1 duration-300"
             >
-              <span className="text-4xl md:text-5xl font-light text-foreground/30 shrink-0">{s.num}</span>
-              <h3 className="text-foreground font-semibold tracking-widest text-sm md:text-base">{s.title}</h3>
+              <span className="text-3xl md:text-4xl font-bold text-secondary shrink-0">{s.num}</span>
+              <div>
+                <h3 className="text-foreground font-semibold tracking-wide text-sm md:text-base">{s.title}</h3>
+                <p className="text-muted-foreground text-xs md:text-sm mt-1">{s.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
