@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { StaggerContainer, StaggerItem } from "@/components/AnimatedSection";
 
 const testimonials = [
   {
@@ -32,29 +33,31 @@ const Testimonials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {testimonials.map((t, i) => (
-            <div key={i} className={`rounded-xl p-6 border ${i === 1 ? "bg-secondary text-secondary-foreground border-secondary" : "bg-card/40 border-border/30 text-foreground"}`}>
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: t.rating }).map((_, j) => (
-                  <Star key={j} className={`w-4 h-4 fill-current ${i === 1 ? "text-secondary-foreground" : "text-secondary"}`} />
-                ))}
-              </div>
-              <p className={`text-sm mb-6 leading-relaxed ${i === 1 ? "text-secondary-foreground/90" : "text-muted-foreground"}`}>
-                "{t.text}"
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/30 flex items-center justify-center">
-                  <span className="text-primary-foreground font-semibold text-sm">{t.name.charAt(0)}</span>
+            <StaggerItem key={i}>
+              <div className={`rounded-xl p-6 border hover:-translate-y-1 transition-transform duration-300 ${i === 1 ? "bg-secondary text-secondary-foreground border-secondary" : "bg-card/40 border-border/30 text-foreground"}`}>
+                <div className="flex gap-1 mb-4">
+                  {Array.from({ length: t.rating }).map((_, j) => (
+                    <Star key={j} className={`w-4 h-4 fill-current ${i === 1 ? "text-secondary-foreground" : "text-secondary"}`} />
+                  ))}
                 </div>
-                <div>
-                  <p className="font-semibold text-sm">{t.name}</p>
-                  <p className={`text-xs ${i === 1 ? "text-secondary-foreground/70" : "text-muted-foreground"}`}>{t.role}</p>
+                <p className={`text-sm mb-6 leading-relaxed ${i === 1 ? "text-secondary-foreground/90" : "text-muted-foreground"}`}>
+                  "{t.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/30 flex items-center justify-center">
+                    <span className="text-primary-foreground font-semibold text-sm">{t.name.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <p className="font-semibold text-sm">{t.name}</p>
+                    <p className={`text-xs ${i === 1 ? "text-secondary-foreground/70" : "text-muted-foreground"}`}>{t.role}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

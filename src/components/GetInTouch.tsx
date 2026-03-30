@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
-
+import { AnimatedSection, ScaleIn } from "@/components/AnimatedSection";
 
 const GetInTouch = () => {
   return (
@@ -9,17 +9,19 @@ const GetInTouch = () => {
       {/* Get In Touch */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">Get In Touch</h2>
-          <div className="w-16 h-1 bg-secondary-foreground/30 mx-auto mt-3 mb-6 rounded-full" />
-          <p className="text-secondary-foreground/70 max-w-lg mx-auto mb-8">
-            Ready to start your next project? Contact us today and let's build something amazing together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-            <Input placeholder="Enter your email" className="bg-white/90 border-0 text-secondary-foreground rounded-full" />
-            <Button className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90 rounded-full px-8">
-              Send
-            </Button>
-          </div>
+          <AnimatedSection>
+            <h2 className="text-3xl md:text-4xl font-bold text-secondary-foreground">Get In Touch</h2>
+            <div className="w-16 h-1 bg-secondary-foreground/30 mx-auto mt-3 mb-6 rounded-full" />
+            <p className="text-secondary-foreground/70 max-w-lg mx-auto mb-8">
+              Ready to start your next project? Contact us today and let's build something amazing together.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <Input placeholder="Enter your email" className="bg-white/90 border-0 text-secondary-foreground rounded-full" />
+              <Button className="bg-secondary-foreground text-secondary hover:bg-secondary-foreground/90 rounded-full px-8">
+                Send
+              </Button>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -35,7 +37,7 @@ const GetInTouch = () => {
               <p className="text-muted-foreground text-sm mb-4">Building future-ready digital products.</p>
               <div className="flex gap-3">
                 {[Facebook, Twitter, Linkedin, Instagram].map((Icon, i) => (
-                  <a key={i} href="#" className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 transition-colors">
+                  <a key={i} href="#" className="w-9 h-9 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/40 hover:scale-110 transition-all duration-300">
                     <Icon className="w-4 h-4 text-primary" />
                   </a>
                 ))}
@@ -47,7 +49,7 @@ const GetInTouch = () => {
               <h4 className="text-foreground font-semibold mb-4">Quick Links</h4>
               <div className="space-y-2">
                 {["Home", "About Us", "Services", "Portfolio", "Blog", "Contact"].map((l) => (
-                  <a key={l} href="#" className="block text-muted-foreground text-sm hover:text-foreground transition-colors">{l}</a>
+                  <a key={l} href="#" className="block text-muted-foreground text-sm hover:text-foreground hover:translate-x-1 transition-all duration-300">{l}</a>
                 ))}
               </div>
             </div>
