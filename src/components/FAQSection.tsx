@@ -1,41 +1,66 @@
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
-  { q: "What does your custom web development process look like?", a: "Our process begins with a thorough discovery phase where we understand your business goals, target audience, and technical requirements. We then move through planning, design, development, testing, and deployment phases with regular check-ins and iterative feedback loops to ensure the final product exceeds expectations." },
-  { q: "Can I see examples of your previous work?", a: "Absolutely! Visit our Case Studies section to explore our portfolio of successfully delivered projects across various industries including fintech, healthcare, e-commerce, and more." },
-  { q: "Do you maintain or support websites and apps?", a: "Yes, we offer comprehensive maintenance and support packages that include bug fixes, security updates, performance optimization, and feature enhancements." },
-  { q: "What is the typical timeline for a web development project?", a: "Project timelines vary based on complexity. A simple website takes 4-6 weeks, while complex web applications can take 3-6 months. We provide detailed timelines during our planning phase." },
-  { q: "Can I request changes or updates to my existing website?", a: "Of course! We welcome enhancement requests and can work on improving your existing website or application with new features, better performance, or updated designs." },
+  { q: "What kind of companies do you work with?", a: "We work with startups, SMEs, and enterprise-level clients across industries like fintech, healthcare, e-commerce, education, and recruitment." },
+  { q: "How much does a typical project cost?", a: "Project costs vary based on scope and complexity. We offer competitive pricing and provide detailed estimates after understanding your requirements." },
+  { q: "How long does it take to complete a project?", a: "Timelines depend on the project scope. Simple websites take 4-6 weeks, while complex applications can take 3-6 months." },
+  { q: "Can you redesign my existing product or website?", a: "Absolutely! We specialize in redesigning and modernizing existing products to improve user experience and performance." },
 ];
 
 const FAQSection = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
   return (
-    <section className="py-20 bg-background">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 max-w-3xl">
         <AnimatedSection className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Frequently <span className="text-secondary italic">Asked Questions</span>
           </h2>
-          <p className="text-muted-foreground mt-3">
-            Everything you need to know about our services, projects, and processes.
+          <p className="text-gray-500 mt-3">
+            Everything you need to know before starting your project with us.
           </p>
         </AnimatedSection>
 
-        <AnimatedSection delay={0.2}>
-          <Accordion type="single" collapsible className="space-y-3">
-            {faqs.map((f, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="border border-secondary/50 rounded-xl px-5 bg-secondary/5 data-[state=open]:bg-secondary data-[state=open]:text-secondary-foreground">
-                <AccordionTrigger className="text-left text-sm md:text-base hover:no-underline data-[state=open]:text-secondary-foreground">
-                  {f.q}
-                </AccordionTrigger>
-                <AccordionContent className="text-sm text-muted-foreground data-[state=open]:text-secondary-foreground/80">
-                  {f.a}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </AnimatedSection>
+        <div className="space-y-3">
+          {faqs.map((f, i) => (
+            <div key={i}>
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className={`w-full flex items-center justify-between px-6 py-4 rounded-xl text-left transition-all ${
+                  openIndex === i
+                    ? "bg-secondary text-secondary-foreground"
+                    : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                }`}
+              >
+                <span className="font-semibold text-sm">Q{i + 1}: {f.q}</span>
+                {openIndex === i ? (
+                  <ChevronDown className="w-5 h-5 shrink-0" />
+                ) : (
+                  <ChevronUp className="w-5 h-5 shrink-0" />
+                )}
+              </button>
+              <AnimatePresence>
+                {openIndex === i && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="px-6 py-4 border-2 border-secondary border-t-0 rounded-b-xl bg-white">
+                      <p className="text-gray-600 text-sm">A: {f.a}</p>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
