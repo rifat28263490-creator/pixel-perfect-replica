@@ -1,81 +1,37 @@
 
 
-# Digital Agency Website — Exact Replica
+# Hero Section — Animated Image Background
 
-## Design System
-- **Background**: Dark (#0a0a0a / near-black)
-- **Primary accent**: Teal (#167176)
-- **Secondary accent**: Amber/Orange (#FCAE1F)
-- **Text**: White and muted gray
-- **Font**: Clean sans-serif
-- **Decorative**: Blurred gradient ellipses (using provided SVG assets)
+## What We Know
+- User uploaded a ZIP file containing JPG images
+- These images should replace the current hero section text content entirely
+- The hero should become a full-screen animated image showcase with smooth scroll-based or auto-playing animation
+- Remove: headline, subtitle, and CTA button
+- Keep: decorative ellipse SVGs as overlays for brand consistency
 
-## Sections (top to bottom)
+## Steps
 
-### 1. Navigation Bar
-- Logo on left, nav links (Home, About, Services, etc.), orange "Contact Us" CTA button
+### 1. Extract ZIP and copy images
+- Extract `ezgif-3f4df6d48fc30c88-jpg.zip` to discover the JPG files inside
+- Copy all JPG files to `src/assets/hero/` for bundled imports
 
-### 2. Hero Section
-- "We Build Future-Ready **Digital Products**" headline
-- Subtitle text, CTA button
-- Background: dark with teal/amber blurred ellipses (provided SVGs), decorative looper pattern
+### 2. Rebuild HeroSection.tsx
+- Remove all text content (h1, paragraph, button)
+- Create a full-screen image carousel/slideshow that auto-cycles through the extracted JPGs
+- Use `framer-motion`'s `AnimatePresence` for smooth crossfade transitions between images
+- Each image fades in with a subtle scale or pan (Ken Burns) effect for cinematic feel
+- Auto-advance every ~4 seconds with smooth crossfade
+- Keep the decorative ellipse SVGs layered on top for visual depth
+- Optionally add a subtle parallax scroll effect on the images using `useScroll` + `useTransform` from framer-motion
 
-### 3. Core Features
-- Section title with orange underline on "Features"
-- 4 icon cards in a row (e.g., Custom Development, Cloud Solutions, etc.)
-- Teal blurred ellipse in bottom-left corner
+### 3. Animation Details
+- **Crossfade**: Each image fades in (opacity 0→1) while the previous fades out, with a slight zoom (scale 1.05→1) for a smooth Ken Burns effect
+- **Scroll parallax**: Images shift slightly on scroll using `useScroll`/`useTransform` for depth
+- **Timing**: ~4s per slide, 1s transition duration
+- Fully responsive — images use `object-cover` to fill the viewport
 
-### 4. Our Services
-- Title with orange accent on "Services"
-- Subtitle text
-- Grid of service cards with icons, each with a hover/active state showing an orange left border
-
-### 5. Working Process
-- Title with orange accent on "Process"
-- 4 numbered steps (01–04) in vertical layout with orange number badges
-- Steps: Research & Analysis, Detailed Planning, Design & Implementation, Testing & Launch
-- Right-side decorative looper SVG and amber ellipse
-
-### 6. What We Do
-- Split layout: left side with circular image thumbnails and dots, right side with text description and bullet points
-
-### 7. Why Choose Us
-- Title with orange accent
-- Left: feature list items with teal icons
-- Right: image with overlay
-
-### 8. Technologies We Work With
-- Title with orange accent
-- Tab filters (Frontend, Backend, etc.)
-- Logo grid showing tech icons (React, Angular, Swift, .NET, etc.)
-
-### 9. Case Studies
-- Title with orange accent
-- Cards with project images and overlay text
-
-### 10. Blog Title
-- Blog post cards with images, dates, and titles
-
-### 11. Testimonials
-- Title with orange accent
-- Testimonial cards with quotes, avatars, names, and ratings
-
-### 12. FAQ Section
-- Accordion-style questions with expand/collapse
-
-### 13. Get in Touch / Footer
-- Contact form section
-- Footer with logo, social links, quick links, newsletter signup
-- Copyright bar
-
-## Assets
-- Copy all provided SVG ellipses and looper background to `src/assets/`
-- Use them as decorative positioned elements in relevant sections
-
-## Implementation
-- Single-page layout in `Index.tsx`
-- Break into component files per section for maintainability
-- Fully responsive
-- Smooth scroll navigation
-- Accordion component for FAQ using existing shadcn accordion
+### Technical Notes
+- Images imported from `src/assets/hero/` as ES modules
+- `AnimatePresence` with `mode="sync"` for overlapping crossfades
+- `useEffect` interval for auto-advance, cleanup on unmount
 
